@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.CrossOrigin;
+//import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,14 +27,14 @@ public class FurnitureController {
 	FurnitureRepository furnitureRepository;
 	
 	// Get all furniture
-	@CrossOrigin(origins = "http://localhost:4200")
+//	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("furnitures")
 	public List<Furniture> getAllFurniture() {
 		return this.furnitureRepository.findAll();
 	}
 	
 	// Get furniture by id
-	@CrossOrigin(origins = "http://localhost:4200")
+//	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("furnitures/{id}")
 	public ResponseEntity<Furniture> getFurnitureById(@PathVariable(value = "id") long furnitureId) {
 		Furniture furniture = furnitureRepository.findById(furnitureId).orElseThrow(() -> new ResourceNotFoundException("Furniture list not found"));
@@ -42,14 +42,14 @@ public class FurnitureController {
 	};
 	
 	// Create new furniture
-	@CrossOrigin(origins = "http://localhost:4200")
+//	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("furnitures")
 	public Furniture createFurniture(@Valid @RequestBody Furniture furniture) {
 		return furnitureRepository.save(furniture);
 	};
 	
 	// Update furniture by id
-	@CrossOrigin(origins = "http://localhost:4200")
+//	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("furnitures/{id}")
 	public ResponseEntity<Furniture> updateFurniture(@PathVariable(value = "id") long furnitureId, @Valid @RequestBody Furniture updateFurniture) {
 		Furniture furniture = furnitureRepository.findById(furnitureId).orElseThrow(() -> new ResourceNotFoundException("Furniture not found"));
@@ -64,7 +64,7 @@ public class FurnitureController {
 	};
 	
 	// Delete furniture by id
-	@CrossOrigin(origins = "http://localhost:4200")
+//	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("furnitures/{id}")
 	public Map<String, Boolean> deleteFurniture(@PathVariable(value = "id") long furnitureId) {
 		Furniture furniture = furnitureRepository.findById(furnitureId).orElseThrow(() -> new ResourceNotFoundException("Smart phone not found"));
